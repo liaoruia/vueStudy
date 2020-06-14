@@ -9,7 +9,6 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
@@ -20,18 +19,18 @@ const createLintingRule = () => ({
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
 })
+
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'
   },
-  // externals: {
-  //   'vue': 'Vue',
-  //   'ElementUI': 'ELEMENT',
-  //   '$': 'jQuery',
-  //   'axios': 'axios',
-  //   'CryptoJS': 'crypto-js'
-  // },
+  externals: {
+    'ElementUI': 'ELEMENT',
+    '$': 'jQuery',
+    // 'axios': 'axios',
+    'CryptoJS': 'crypto-js'
+  },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
